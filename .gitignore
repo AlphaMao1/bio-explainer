@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+.env.*
+uvicorn.out.log
+uvicorn.err.log
+server/config.local.json
