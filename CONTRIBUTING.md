@@ -1,23 +1,55 @@
-# Contributing
+# 参与贡献
 
-Thanks for helping improve Bio Explainer.
+欢迎一起改进 Bio Explainer。这个项目的目标是：让中文用户可以在本地生成高质量的生物科普图，同时尽量减少事实错误、图文不一致和重复消耗图片额度。
 
-When opening an issue or pull request, please include:
+## 提 Issue 时请尽量说明
 
-- What problem the change addresses
-- How to reproduce or verify the behavior
-- Any relevant example species, prompt, or cached asset
-- Test results, preferably `uv run pytest`
+- 你遇到的问题是什么。
+- 如何复现这个问题。
+- 使用的物种、语言、标签页和点击区域。
+- 是否命中了缓存，或是否重新生成了图片。
+- 页面截图、控制台报错、终端报错。
 
-## References
+如果问题涉及事实错误，请尽量附上可靠来源，尤其是演化、生态位、食物链、地质年代、解剖结构等内容。
 
-This project was informed by:
+## 提 Pull Request 前
+
+请尽量完成：
+
+```powershell
+uv run pytest
+node --check static/app.js
+```
+
+如果改动涉及后端模型调用、缓存或配置保存，请额外确认：
+
+- 不会重复生成已经缓存的图片。
+- 不会把 API Key 返回给前端或写进仓库。
+- 不会破坏已有演示素材。
+- 错误信息对普通用户足够清楚。
+
+## 内容与素材
+
+欢迎提交有代表性的演示素材，但请确认：
+
+- 不包含私人 API Key、账号信息或本地路径。
+- 不包含明显事实错误。
+- 图片内容适合作为公开项目示例。
+- 如果是冷门物种、古生物、生态位或演化图，最好附上来源或说明不确定性。
+
+## 不要提交
+
+- `.env`
+- `server/config.local.json`
+- 日志文件
+- 虚拟环境目录
+- 私人生成素材
+- 任何 API Key、Token、Cookie 或账号凭证
+
+## 参考与致谢
+
+项目参考了：
 
 - [vthinkxie/illustrated-explainer-spec](https://github.com/vthinkxie/illustrated-explainer-spec)
-- Science illustration prompt ideas shared by @berryxia on X
+- X 上 @berryxia 分享的科普图画提示词经验
 
-## Safety Notes
-
-- Do not commit API keys, `.env`, `server/config.local.json`, logs, or other private configuration.
-- Demo image assets are welcome when they are useful for understanding the project, but please confirm they do not contain private or unsuitable content.
-- For rare species, paleobiology, ecology diagrams, food webs, and evolutionary timelines, prefer adding reliable sources or clearly marking uncertainty.
